@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wingstop Rewards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -12,7 +13,7 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #f3f3f3;
       display: flex;
       flex-direction: column;
@@ -37,7 +38,7 @@
     .login-box {
       background-color: white;
       padding: 40px;
-      margin-top: 40px;
+      margin-top: 50px;
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       width: 100%;
@@ -48,7 +49,8 @@
     h2 {
       font-size: 22px;
       margin-bottom: 25px;
-      font-weight: bold;
+      font-weight: 600;
+      color: #333;
     }
 
     input[type="text"],
@@ -76,15 +78,23 @@
       background-color: #007bff;
       color: white;
       font-size: 16px;
+      font-weight: 600;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    #result {
-      color: green;
-      margin-top: 15px;
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
       font-size: 14px;
+      display: block;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -96,7 +106,7 @@
 
   <div class="login-box">
     <h2>Wingstop Rewards: Account Login</h2>
-    <form onsubmit="handleLogin(); return false;">
+    <form onsubmit="handleLogin(event)">
       <input type="text" placeholder="Email" id="email" required>
       <input type="password" placeholder="Password" id="password" required>
       <label>
@@ -104,7 +114,7 @@
       </label>
       <button type="submit">Login</button>
     </form>
-    <p id="result"></p>
+    <a href="#">Forgot your password?</a>
   </div>
 
   <script>
@@ -113,9 +123,10 @@
       passwordInput.type = this.checked ? 'text' : 'password';
     });
 
-    function handleLogin() {
-      const email = document.getElementById('email').value;
-      document.getElementById('result').innerText = "Thank you! A confirmation email is being sent!";
+    function handleLogin(event) {
+      event.preventDefault();
+      // Simulate login logic
+      window.location.href = "confirmation.html";
     }
   </script>
 
